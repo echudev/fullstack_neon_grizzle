@@ -1,15 +1,21 @@
 import 'dotenv/config';
-import { usersTable } from '../db/schema';
-import { db } from '../db/connection';
-  
-// Tipo para una fila de `usersTable`
-type User = typeof usersTable.$inferSelect;
+
+type User = {
+  id: number;
+  name: string;
+};
 
 export default async function Home() {
-  const users: Array<User> = await db.select().from(usersTable);
+  // Realiza la solicitud `fetch` directamente
+  const response = await fetch('http://localhost:3000/api/users', {
+    // Esta opción permite revalidar los datos cada vez que se accede a la página
+    cache: 'no-store',
+  });
+  
+  const users: Array<User> = await response.json();
 
-    return (
-      <main>
+  return (
+    <main>
       <h1>Hola, soy una app de Next.js</h1>
       <ul>
         {users.length > 0 ? (
@@ -19,7 +25,7 @@ export default async function Home() {
             </li>
           ))
         ) : (
-          <p>Loading...</p>
+          <p>No hay usuarios disponibles.</p>
         )}
       </ul>
     </main>
