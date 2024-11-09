@@ -1,14 +1,16 @@
 "use client";
 
+import LoginForm from "./loginForm";
+
 export default function Home() {
   return (
-    <main className="flex flex-col m-10">
-      <h1>Hola, soy una app de Next.js</h1>
-      <p>
-        Ingresa a la página de administración para ver los usuarios registrados.
-      </p>
+    <main className="flex flex-col m-10 justify-center items-center">
+      <h1 className="my-4 text-3xl">Bienvenido!</h1>
+
+      <LoginForm />
+
       <button
-        className="max-w-40 bg-violet-900 border border-violet-700 rounded-md px-2 hover:bg-violet-700 transition-all"
+        className="my-3 max-w-40 bg-violet-900 border border-violet-700 rounded-md px-2 hover:bg-violet-700 transition-all"
         onClick={() => (window.location.href = "/admin")}
       >
         Admin page
