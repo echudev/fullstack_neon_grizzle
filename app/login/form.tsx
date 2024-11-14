@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import {
   Card,
@@ -223,8 +224,8 @@ const LoginForm = () => {
       <CardFooter className="flex justify-center">
         <p className="text-sm text-gray-600">
           ¿No tienes una cuenta?{" "}
-          <Button variant="link" className="p-0">
-            Regístrate
+          <Button asChild variant="link" className="p-0">
+            <Link href="/register">Registrate</Link>
           </Button>
         </p>
       </CardFooter>
