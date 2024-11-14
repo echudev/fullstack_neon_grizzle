@@ -13,16 +13,9 @@ export async function POST(req: NextRequest) {
     .where(eq(usersTable.name, name));
   const user = result.length > 0 ? result[0] : null;
 
-  if (!user) {
+  if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
     return NextResponse.json(
-      { error: "Usuario no encontrado" },
-      { status: 401 }
-    );
-  }
-
-  if (!(await bcrypt.compare(password, user.passwordHash))) {
-    return NextResponse.json(
-      { error: "Contraseña incorrecta" },
+      { error: "Credenciales inválidas" },
       { status: 401 }
     );
   }
