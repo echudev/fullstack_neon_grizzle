@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { UserSelect } from "../../db/schema";
-import RegisterForm from "./form";
 
 export default function AdminPage() {
   const [users, setUsers] = useState<UserSelect[]>([]);
@@ -36,7 +35,6 @@ export default function AdminPage() {
           </li>
         ))}
       </ul>
-      <RegisterForm />
       <button
         className="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-all"
         onClick={() => (window.location.href = "/")}
