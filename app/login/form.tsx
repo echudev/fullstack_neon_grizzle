@@ -118,7 +118,6 @@ const LoginForm = () => {
       } else {
         setServerError("Ocurrió un error durante el inicio de sesión");
       }
-      console.error("Error en el login:", err);
     } finally {
       setIsLoading(false);
     }

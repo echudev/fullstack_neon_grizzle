@@ -112,7 +112,6 @@ const RegisterForm = () => {
       } else {
         setServerError("Ocurrió un error durante el registro");
       }
-      console.error("Error en el registro:", err);
     } finally {
       setIsLoading(false);
     }
